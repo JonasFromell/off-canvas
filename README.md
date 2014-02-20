@@ -3,7 +3,7 @@ Usage
 
 Wrap your menu in a "off-canvas-menu" class
 
-```
+```html
 <nav class="off-canvas-menu">
     <ul>
          <li><a href="#">Menu item</a></li>
@@ -13,7 +13,7 @@ Wrap your menu in a "off-canvas-menu" class
 
 Wrap your content in a "off-canvas-container" class
 
-```
+```html
 <div class="off-canvas-container">
     <!-- Content here -->
 </div>
@@ -21,7 +21,7 @@ Wrap your content in a "off-canvas-container" class
 
 Add a button or link with the "data-toggle" attribute set to "off-canvas"
 
-```
+```html
 <button data-toggle="off-canvas">Click me!</button>
 ```
 
