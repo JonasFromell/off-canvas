@@ -1,0 +1,91 @@
+// Mixins
+.transform(@string) {
+	-webkit-transform: 	@string;
+	-moz-transform: 	@string;
+	-ms-transform: 		@string;
+	-o-transform: 		@string;
+	transform: 			@string;	
+}
+
+.transition(@string) {
+	-webkit-transition: @string;
+	-moz-transition: 	@string;
+	-ms-transition: 	@string;
+	-o-transition: 		@string;
+	transition: 		@string;
+}
+
+.transition-transform(@string) {
+	-webkit-transition: -webkit-transform @string;
+	-moz-transition: 	-moz-transform @string;
+	-ms-transition: 	-ms-transform @string;
+	-o-transition: 		-o-transform @string;
+	transition: 		transform @string;
+}
+
+// Basic styling
+.off-canvas-menu {
+	position: fixed;
+	width: @off-canvas-menu-width;
+	height: 100%;
+	top: 0;
+	z-index: 99;
+	overflow: auto;
+}
+
+.off-canvas-container {
+	overflow: hidden;
+}
+
+.off-canvas-container {
+	&:after {
+		content: '';
+		position: absolute;
+		top: 0; right: 0;
+		width: 0; height: 0;
+		background: rgba(0, 0, 0, 0.2);
+		opacity: 0;
+	}
+}
+
+.off-canvas-container.push {
+	&:after {
+		width: 100%;
+		height: 100%;
+		opacity: 1;
+	}
+}
+
+// TRANSFORMS
+// Closed state
+.off-canvas-menu {
+	.transform(translate3d(-@off-canvas-menu-width, 0, 0));
+}
+
+// Open state
+.off-canvas-menu.open {
+	.transform(translate3d(0, 0, 0));
+}
+
+// Push state of container
+.off-canvas-container.push {
+	.transform(translate3d(@off-canvas-menu-width, 0, 0));
+}
+
+// TRANSITIONS
+.off-canvas-container {
+	&:after {
+		.transition("opacity .5s, width .1s .5s, height .1s .5s");
+	}
+}
+
+.off-canvas-container.push {
+	&:after {
+		.transition(opacity .5s);
+	}
+}
+
+.off-canvas-menu, .off-canvas-container {
+	.transition-transform(.2s cubic-bezier(.16, .68, .43, .99));
+}
+
